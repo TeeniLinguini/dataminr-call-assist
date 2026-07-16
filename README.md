@@ -2,6 +2,8 @@
 
 A single-page call prep tool for Dataminr SDRs and AEs. Pick the industry, pick the role on the call, get the value proposition and case studies back in seconds.
 
+See it in action: https://teenilinguini.github.io/dataminr-call-assist/
+
 ## What it does
 
 Two clicks and a rep has what they need before a call or email:
