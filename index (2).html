@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dataminr Call Assist</title>
+<meta name="description" content="Call prep reference for Dataminr sales reps. Pick the industry and role, get the value prop and case studies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f7fb;
+    --ink: #14162b;
+    --ink-soft: #5b5e76;
+    --ink-faint: #9497ac;
+    --border: #e7e7f0;
+    --border-soft: #f0f0f6;
+
+    --news: #ff5a46;
+    --news-tint: #fff1ee;
+    --news-tint-strong: #ffe2dc;
+
+    --gov: #0e7c7b;
+    --gov-tint: #eaf6f5;
+    --gov-tint-strong: #d9f0ee;
+
+    --corp: #5b4fe9;
+    --corp-tint: #f1f0fe;
+    --corp-tint-strong: #e4e1fd;
+
+    --accent: var(--corp);
+    --accent-tint: var(--corp-tint);
+    --accent-tint-strong: var(--corp-tint-strong);
+
+    --radius: 14px;
+    --radius-sm: 9px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  ::selection { background: var(--accent-tint-strong); }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 56px 24px 40px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -160px;
+    right: -180px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    background: conic-gradient(from 200deg, #5b4fe9, #7c6bff, #ff5a46, #ffb020, #0e7c7b, #5b4fe9);
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(30px, 4.4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  /* ---------- STEP LABELS ---------- */
+
+  .step {
+    padding-top: 40px;
+  }
+
+  .step-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+
+  .step-label .num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .step-label.done .num {
+    background: var(--accent);
+  }
+
+  /* ---------- VERTICAL CARDS ---------- */
+
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .vertical-grid, .tier-grid { grid-template-columns: 1fr; }
+  }
+
+  .v-card {
+    text-align: left;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+    font-family: inherit;
+  }
+
+  .v-card:hover { transform: translateY(-1px); }
+
+  .v-card .v-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .v-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .v-card p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .v-card[data-v="news"] .v-tag { background: var(--news-tint); color: var(--news); }
+  .v-card[data-v="gov"] .v-tag { background: var(--gov-tint); color: var(--gov); }
+  .v-card[data-v="corp"] .v-tag { background: var(--corp-tint); color: var(--corp); }
+
+  .v-card[data-v="news"]:hover, .v-card[data-v="news"].active { border-color: var(--news); background: var(--news-tint); }
+  .v-card[data-v="gov"]:hover, .v-card[data-v="gov"].active { border-color: var(--gov); background: var(--gov-tint); }
+  .v-card[data-v="corp"]:hover, .v-card[data-v="corp"].active { border-color: var(--corp); background: var(--corp-tint); }
+
+  /* ---------- TIER CARDS ---------- */
+
+  .tier-section { display: none; }
+  .tier-section.visible { display: block; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .t-card {
+    text-align: left;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 18px;
+    font-family: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .t-card .t-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .t-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .t-card:hover { border-color: var(--accent); background: var(--accent-tint); }
+  .t-card.active { border-color: var(--accent); background: var(--accent-tint); }
+
+  /* ---------- RESULTS ---------- */
+
+  .results { display: none; padding-top: 44px; }
+  .results.visible { display: block; }
+
+  .result-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .result-head h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .result-head .r-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .card-block {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 14px;
+  }
+
+  .card-block.opener {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .card-block.opener .card-eyebrow { color: rgba(255,255,255,0.55); }
+
+  .card-block.opener p.copy {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    min-height: 3.4em;
+  }
+
+  .opener-nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .opener-arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .opener-arrow:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+  .opener-dots {
+    display: flex;
+    gap: 7px;
+  }
+
+  .opener-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .opener-dot.active { background: #fff; width: 18px; border-radius: 4px; }
+
+  .card-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+
+  .card-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .vp-row {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 14px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .vp-row:last-of-type { border-bottom: none; }
+
+  .vp-row .vp-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+    padding-top: 1px;
+  }
+
+  .vp-row .vp-value {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .vp-value b { font-weight: 700; }
+
+  .vp-together {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1.5px solid var(--border);
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .vp-together b { background: var(--accent-tint); padding: 0 3px; border-radius: 3px; }
+
+  .two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .two-up { grid-template-columns: 1fr; }
+    .vp-row { grid-template-columns: 100px 1fr; }
+  }
+
+  /* ---------- CASE STUDIES ---------- */
+
+  .cs-heading {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 32px 0 12px;
+  }
+
+  .cs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cs-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 15px 18px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .cs-item:hover { border-color: var(--accent); background: var(--accent-tint); }
+
+  .cs-item .cs-text { min-width: 0; }
+
+  .cs-item .cs-name {
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+
+  .cs-item .cs-line {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  .cs-item .cs-arrow {
+    flex: none;
+    font-size: 18px;
+    color: var(--ink-faint);
+  }
+
+  .cs-item:hover .cs-arrow { color: var(--accent); }
+
+  /* ---------- RESET ---------- */
+
+  .reset-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 28px;
+  }
+
+  .reset-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+
+  .reset-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <h1>Dataminr Call Assist</h1>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="step">
+    <div class="step-label" id="label-1"><span class="num">1</span>Who's the account</div>
+    <div class="vertical-grid" id="vertical-grid"></div>
+  </div>
+
+  <div class="step tier-section" id="tier-section">
+    <div class="step-label" id="label-2"><span class="num">2</span>Who's on the call</div>
+    <div class="tier-grid" id="tier-grid"></div>
+  </div>
+
+  <div class="results" id="results"></div>
+
+</div>
+
+<script>
+const DATA = {
+  news: {
+    label: "News",
+    short: "News organizations",
+    accent: "var(--news)",
+    tagClass: "news",
+    tagline: "Newsrooms racing to be first",
+    tiers: [
+      {
+        id: "practitioner",
+        title: "Breaking News & Social Editor",
+        sub: "Desk / Practitioner",
+        persona: "breaking news and social editors",
+        peers: "Sky News, the Daily Mail",
+        openers: [
+          "How many stories has your desk found out about from a competitor's app instead of your own feed?",
+          "When something's breaking on social right now, how would your team actually find out?",
+          "What's the last story you got beat on because someone else saw it first?"
+        ],
+        ten: {
+          use: "catch what's happening on social and on the ground before the wires confirm it",
+          benefit: "publish while competitors are still calling sources to verify"
+        },
+        thirty: {
+          use: "filter hundreds of daily social posts, scanner feeds, and local sources down to the handful of alerts that are actually breaking, tagged by beat and priority",
+          benefit: "act on a story within minutes of it happening, the way Sky News caught the Notre-Dame fire from a single social post before any wire had a photo"
+        }
+      },
+      {
+        id: "manager",
+        title: "Managing Editor",
+        sub: "Cross-desk / Manager",
+        persona: "managing editors",
+        peers: "Deutsche Welle",
+        openers: [
+          "When something breaks mid-shift, how does it actually get to the right reporter right now?",
+          "How many times has a story landed in the wrong inbox and sat there?",
+          "If two desks grabbed the same story today, would you even know until it published twice?"
+        ],
+        ten: {
+          use: "route the right alert to the right desk the moment something happens",
+          benefit: "keep coverage moving without every reporter monitoring ten tabs at once"
+        },
+        thirty: {
+          use: "build alert lists by region, beat, and priority level, so a politics story lands with the politics desk and a weather event lands with whoever's covering it that day",
+          benefit: "get a real head start on stories, the way Deutsche Welle gained a 45 minute lead while still hitting its two-source standard before publishing"
+        }
+      },
+      {
+        id: "chief",
+        title: "VP of News / Editor-in-Chief",
+        sub: "Leadership",
+        persona: "VPs of News and Editors-in-Chief",
+        peers: "the Daily Mail",
+        openers: [
+          "Every point of share of voice you lose to a faster competitor shows up in your traffic numbers before it shows up in a headline.",
+          "How many minutes does it usually take your newsroom to catch up once a competitor breaks first?",
+          "What's speed actually worth to your newsroom in traffic and ad revenue this year?"
+        ],
+        ten: {
+          use: "consistently land breaking stories minutes ahead of competitors",
+          benefit: "protect the traffic and ad revenue that come from being first"
+        },
+        thirty: {
+          use: "give the entire newsroom an earlier signal on breaking events, instead of relying on any one editor or desk to catch it",
+          benefit: "stay competitive on speed without adding headcount, which is why the Daily Mail runs nearly 650 journalists on Dataminr as an early-warning layer across every beat"
+        }
+      }
+    ],
+    caseStudies: [
+      { name: "Sky News", line: "Caught the Notre-Dame Cathedral fire from a single social post, ahead of every wire service.", url: "https://www.dataminr.com/resources/sky-news-case-study" },
+      { name: "Deutsche Welle", line: "Gained a 45 minute head start on breaking stories while still hitting its two-source standard.", url: "https://www.dataminr.com/resources/case-study/deutsche-welle-uses-dataminr-to-stay-competitive-and-keep-pace-with-evolving-media-industry/" },
+      { name: "Daily Mail", line: "Runs nearly 650 journalists on Dataminr as an early-warning layer across every beat.", url: "https://www.dataminr.com/resources/dataminr-case-study-daily-mail" }
+    ]
+  },
+  gov: {
+    label: "Public Sector & Defense",
+    short: "Public Defense",
+    accent: "var(--gov)",
+    tagClass: "gov",
+    tagline: "Agencies protecting people and infrastructure",
+    tiers: [
+      {
+        id: "practitioner",
+        title: "Emergency Mgmt. Analyst / Watch Officer",
+        sub: "Desk / Practitioner",
+        persona: "emergency management analysts and watch officers",
+        peers: "state transportation and public safety agencies",
+        openers: [
+          "How much of your shift is spent waiting on a phone call that should've been a push alert twenty minutes earlier?",
+          "What's the gap right now between something happening and it hitting your desk?",
+          "How many incidents do you find out about after they're already trending online?"
+        ],
+        ten: {
+          use: "get the first signal of an incident before it's officially reported",
+          benefit: "start their response minutes earlier instead of waiting on a call that's already running late"
+        },
+        thirty: {
+          use: "surface public signals, social posts, sensor data, and local reporting the moment an incident starts developing, before it's confirmed through official channels",
+          benefit: "catch disruptions that used to reach the team secondhand, the way a state transportation agency transformed how fast it detects and responds to rail incidents"
+        }
+      },
+      {
+        id: "manager",
+        title: "Director of Emergency Mgmt. / Fusion Center Lead",
+        sub: "Program / Manager",
+        persona: "emergency management directors and fusion center leads",
+        peers: "regional and state public safety agencies",
+        openers: [
+          "When an incident spans two or three departments, how long before everyone's actually looking at the same information?",
+          "How many different systems does your team check before they agree on what's actually happening?",
+          "What does it take today to get police, fire, and transit looking at the same picture at once?"
+        ],
+        ten: {
+          use: "give every responding team, police, fire, transit, public works, a shared real-time picture of what's happening",
+          benefit: "coordinate a response across departments instead of relaying information team to team"
+        },
+        thirty: {
+          use: "push a single verified source to every channel their teams already use, so a transit disruption or security incident reaches every relevant department at the same time",
+          benefit: "run a coordinated response instead of five teams improvising in parallel off different information"
+        }
+      },
+      {
+        id: "chief",
+        title: "Chief / Agency Director",
+        sub: "Leadership",
+        persona: "agency directors and chiefs",
+        peers: "the USO",
+        openers: [
+          "If something happens to someone in your care tomorrow, what's the honest answer for how fast you'd know?",
+          "How do you prove to your board or council that the mission's covered with the budget you've got?",
+          "What would it take to protect more ground without asking for more headcount?"
+        ],
+        ten: {
+          use: "monitor the safety of the people they're responsible for without adding headcount",
+          benefit: "defend the budget and prove the mission is covered as things get more complex"
+        },
+        thirty: {
+          use: "run one platform that does the monitoring work of a much larger team, spread across every location or population the agency covers",
+          benefit: "scale protection without scaling headcount, the way the USO uses it to improve how it looks after military personnel and their families worldwide"
+        }
+      }
+    ],
+    caseStudies: [
+      { name: "State Transportation Agency", line: "Transformed how fast the agency detects and responds to rail incidents.", url: "https://www.dataminr.com/resources/case-study/state-transportation-agency-dataminr-first-alert/" },
+      { name: "USO", line: "Improved how the USO looks after military personnel and their families worldwide.", url: "https://www.dataminr.com/resources/case-study/how-the-uso-improves-service-for-military-personnel-with-dataminr/" }
+    ]
+  },
+  corp: {
+    label: "Corporate Strategy & Security",
+    short: "Corporate Strategy",
+    accent: "var(--corp)",
+    tagClass: "corp",
+    tagline: "Enterprises managing risk at scale",
+    tiers: [
+      {
+        id: "practitioner",
+        title: "Corporate Security Analyst",
+        sub: "Desk / Practitioner",
+        persona: "corporate security analysts",
+        peers: "CNA and similar enterprise security teams",
+        openers: [
+          "Of the alerts that hit your desk this week, how many turned out to actually matter?",
+          "How much of your day goes to ruling out noise instead of working real incidents?",
+          "How many tools are you checking before you trust that an alert is real?"
+        ],
+        ten: {
+          use: "cut through hundreds of daily alerts to the handful that actually matter",
+          benefit: "spend the day acting on real threats instead of chasing false positives"
+        },
+        thirty: {
+          use: "let Dataminr's AI filter monitoring data before it reaches the analyst, narrowing it to what's relevant to their sites, people, and brand",
+          benefit: "cut false positive rates by more than 75 percent at one enterprise, freeing the analyst to work real incidents instead of ruling out noise"
+        }
+      },
+      {
+        id: "manager",
+        title: "Director of Global Security / VP of Business Resilience",
+        sub: "Program / Manager",
+        persona: "directors of global security and heads of business resilience",
+        peers: "a global financial services firm",
+        openers: [
+          "During your last real incident, how many different tools did your team have open at once?",
+          "How many vendors are you paying for pieces of the same picture?",
+          "If a crisis started right now, how long before your team is even looking at the same data?"
+        ],
+        ten: {
+          use: "replace five or six disconnected monitoring tools with one feed",
+          benefit: "respond to an incident without stitching together intelligence from different vendors in real time"
+        },
+        thirty: {
+          use: "consolidate physical, cyber, and operational risk monitoring into a single source, instead of maintaining separate tools that don't talk to each other",
+          benefit: "run the whole security org off one system during an incident, the way a global financial services firm replaced a patchwork of disconnected intelligence feeds with Dataminr"
+        }
+      },
+      {
+        id: "chief",
+        title: "Chief Security Officer / Chief Information Security Officer",
+        sub: "Leadership",
+        persona: "Chief Security Officers and Chief Information Security Officers",
+        peers: "a Fortune 500 healthcare provider",
+        openers: [
+          "When the board asks how exposed the company is right now, are you giving them a number or a guess?",
+          "How do you show the board that risk is actually being managed and not just watched?",
+          "What's the honest answer when someone on the board asks what you don't know yet?"
+        ],
+        ten: {
+          use: "give the board one defensible view of enterprise risk",
+          benefit: "justify the security budget instead of explaining it after something already went wrong"
+        },
+        thirty: {
+          use: "bring physical, cyber, and third-party risk into a single view backed by data, instead of separate reports from separate teams",
+          benefit: "walk into a board meeting with a number instead of a guess, the way a Fortune 500 healthcare provider used it to get ahead of third-party risk across its vendor network"
+        }
+      }
+    ],
+    caseStudies: [
+      { name: "CNA", line: "Built a proactive, data-driven threat intelligence program with ThreatConnect, now part of Dataminr.", url: "https://www.dataminr.com/resources/case-study/how-cna-built-a-proactive-data-driven-threat-intelligence-program-with-threatconnect-now-a-part-of-dataminr/" },
+      { name: "Global Financial Services Firm", line: "Replaced a patchwork of disconnected intelligence feeds with one system.", url: "https://www.dataminr.com/resources/case-study/consolidating-disparate-intelligence-feeds-for-a-global-financial-giant/" },
+      { name: "Fortune 500 Healthcare Provider", line: "Got ahead of third-party risk exposure across its vendor network.", url: "https://www.dataminr.com/resources/case-study/healthcare-provider-third-party-risk/" }
+    ]
+  }
+};
+
+let state = { vertical: null, tier: null, openerIndex: 0 };
+
+function renderVerticals() {
+  const grid = document.getElementById('vertical-grid');
+  grid.innerHTML = Object.keys(DATA).map(key => {
+    const v = DATA[key];
+    return `<button class="v-card" data-v="${v.tagClass}" onclick="selectVertical('${key}')">
+      <span class="v-tag">${v.short}</span>
+      <h3>${v.label}</h3>
+      <p>${v.tagline}</p>
+    </button>`;
+  }).join('');
+}
+
+function selectVertical(key) {
+  state.vertical = key;
+  state.tier = null;
+  state.openerIndex = 0;
+
+  document.querySelectorAll('.v-card').forEach(el => el.classList.remove('active'));
+  document.querySelector(`.v-card[data-v="${DATA[key].tagClass}"]`).classList.add('active');
+
+  document.documentElement.style.setProperty('--accent', DATA[key].accent);
+  document.documentElement.style.setProperty('--accent-tint', `var(--${DATA[key].tagClass}-tint)`);
+  document.documentElement.style.setProperty('--accent-tint-strong', `var(--${DATA[key].tagClass}-tint-strong)`);
+
+  renderTiers();
+  document.getElementById('tier-section').classList.add('visible');
+  document.getElementById('label-1').classList.add('done');
+  document.getElementById('results').classList.remove('visible');
+
+  document.getElementById('tier-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderTiers() {
+  const v = DATA[state.vertical];
+  const grid = document.getElementById('tier-grid');
+  grid.innerHTML = v.tiers.map(t => {
+    return `<button class="t-card" data-t="${t.id}" onclick="selectTier('${t.id}')">
+      <span class="t-sub">${t.sub}</span>
+      <h4>${t.title}</h4>
+    </button>`;
+  }).join('');
+}
+
+function selectTier(id) {
+  state.tier = id;
+  state.openerIndex = 0;
+  document.querySelectorAll('.t-card').forEach(el => el.classList.remove('active'));
+  document.querySelector(`.t-card[data-t="${id}"]`).classList.add('active');
+  document.getElementById('label-2').classList.add('done');
+  renderResults();
+}
+
+function together(t, peers, useText, benefitText) {
+  return `We help <b>${t.persona}</b> at organizations like <b>${peers}</b> who use Dataminr to <b>${useText}</b>, which helps them <b>${benefitText}</b>.`;
+}
+
+function vpBlock(label, t, tier) {
+  return `
+    <div class="card-block">
+      <div class="card-eyebrow"><span class="dot"></span>${label}</div>
+      <div class="vp-row"><span class="vp-label">Persona</span><span class="vp-value">${tier.persona}</span></div>
+      <div class="vp-row"><span class="vp-label">Peers</span><span class="vp-value">${tier.peers}</span></div>
+      <div class="vp-row"><span class="vp-label">How they use it</span><span class="vp-value">${t.use}</span></div>
+      <div class="vp-row"><span class="vp-label">How they benefit</span><span class="vp-value">${t.benefit}</span></div>
+      <div class="vp-together">${together(tier, tier.peers, t.use, t.benefit)}</div>
+    </div>
+  `;
+}
+
+function openerBlock(t) {
+  const dots = t.openers.map((_, i) =>
+    `<button class="opener-dot ${i === state.openerIndex ? 'active' : ''}" onclick="setOpener(${i})" aria-label="Option ${i + 1}"></button>`
+  ).join('');
+
+  return `
+    <div class="card-block opener">
+      <div class="card-eyebrow"><span class="dot"></span>Opening line</div>
+      <p class="copy" id="opener-text">${t.openers[state.openerIndex]}</p>
+      <div class="opener-nav">
+        <button class="opener-arrow" onclick="stepOpener(-1)" aria-label="Previous">&#8592;</button>
+        <div class="opener-dots">${dots}</div>
+        <button class="opener-arrow" onclick="stepOpener(1)" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  `;
+}
+
+function setOpener(i) {
+  state.openerIndex = i;
+  renderResults();
+}
+
+function stepOpener(delta) {
+  const v = DATA[state.vertical];
+  const t = v.tiers.find(x => x.id === state.tier);
+  const len = t.openers.length;
+  state.openerIndex = (state.openerIndex + delta + len) % len;
+  renderResults();
+}
+
+function renderResults() {
+  const v = DATA[state.vertical];
+  const t = v.tiers.find(x => x.id === state.tier);
+  const results = document.getElementById('results');
+
+  results.innerHTML = `
+    <div class="result-head">
+      <h2>${t.title}</h2>
+      <span class="r-tag">${v.label}</span>
+    </div>
+
+    ${openerBlock(t)}
+
+    <div class="two-up">
+      ${vpBlock('10 second value proposition', t.ten, t)}
+      ${vpBlock('30 second value proposition', t.thirty, t)}
+    </div>
+
+    <div class="cs-heading">Case studies to point to</div>
+    <div class="cs-list">
+      ${v.caseStudies.map(cs => `
+        <a class="cs-item" href="${cs.url}" target="_blank" rel="noopener">
+          <div class="cs-text">
+            <div class="cs-name">${cs.name}</div>
+            <div class="cs-line">${cs.line}</div>
+          </div>
+          <span class="cs-arrow">&#8594;</span>
+        </a>
+      `).join('')}
+    </div>
+
+    <div class="reset-row">
+      <button class="reset-btn" onclick="resetAll()">Start over</button>
+    </div>
+  `;
+
+  results.classList.add('visible');
+  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetAll() {
+  state = { vertical: null, tier: null, openerIndex: 0 };
+  document.querySelectorAll('.v-card').forEach(el => el.classList.remove('active'));
+  document.getElementById('tier-section').classList.remove('visible');
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('label-1').classList.remove('done');
+  document.getElementById('label-2').classList.remove('done');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderVerticals();
+</script>
+
+</body>
+</html>
